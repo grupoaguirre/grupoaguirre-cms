@@ -1,0 +1,7 @@
+export * from './admin'
+export * from './authors'
+export * from './blog'
+export * from './media'
+export * from './search'
+export * from './tags'
+export * from './recursos'
