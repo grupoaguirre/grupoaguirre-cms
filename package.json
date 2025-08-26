@@ -1,7 +1,7 @@
 {
   "name": "aguirre-server",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
+  "description": "CMS Headless para Grupo Aguirre. Sistema basado en Payload CMS y Next.js",
   "license": "MIT",
   "type": "module",
   "scripts": {
