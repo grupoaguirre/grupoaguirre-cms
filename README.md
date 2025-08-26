@@ -192,11 +192,10 @@ npm run start            # Servidor producción (puerto 10000)
 ### 🔧 **Generación y Mantenimiento**
 
 ```bash
-npm run generate:types         # Tipos TypeScript
-npm run generate:lexical       # Maps del editor Lexical
-npm run generate:importmap     # ES6 modules map
-npm run lint                   # Verificación de código
-npm run build:test            # Build + lint sin deploy
+npx payload generate:types         # Tipos de payload
+npx payload generate:importmap     # Import map de Payload
+npm run lint                       # ESLint
+npm run build:test                # Build + lint sin deploy
 ```
 
 ---
