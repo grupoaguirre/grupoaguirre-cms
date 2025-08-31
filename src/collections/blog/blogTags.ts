@@ -9,7 +9,13 @@ const BlogTags: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['name', 'slug'],
+    defaultColumns: ['title', 'slug'],
+  },
+  access: {
+    read: () => true,
+    create: ({ req }) => req.user?.role === 'super-admin',
+    update: ({ req }) => req.user?.role === 'super-admin',
+    delete: ({ req }) => req.user?.role === 'super-admin',
   },
   fields: [
     {
@@ -38,4 +44,5 @@ const BlogTags: CollectionConfig = {
     ],
   },
 }
+
 export default BlogTags
