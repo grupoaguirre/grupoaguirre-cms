@@ -17,6 +17,7 @@ import {
   legalResources,
 } from './collections'
 import { setupErrorHandlers } from './app/error-handler'
+import { es } from '@payloadcms/translations/languages/es'
 
 setupErrorHandlers()
 
@@ -32,6 +33,10 @@ const isS3Configured = s3Bucket && s3Region && s3AccessKeyId && s3SecretAccessKe
 
 export default buildConfig({
   sharp,
+  i18n: {
+    fallbackLanguage: 'es',
+    supportedLanguages: { es },
+  },
   admin: {
     user: AdminUsers.slug,
     importMap: {
@@ -49,16 +54,7 @@ export default buildConfig({
     },
   },
   localization: {
-    locales: [
-      {
-        label: 'Español',
-        code: 'es',
-      },
-      {
-        label: 'English',
-        code: 'en',
-      },
-    ],
+    locales: ['es', 'en'],
     defaultLocale: 'es',
     fallback: true,
   },
