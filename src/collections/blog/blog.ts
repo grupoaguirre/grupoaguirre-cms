@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload'
 import { CollectionSlug } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html'
 import { syncToSearch } from '../../hooks'
 import { slugify } from '../../utils'
 
@@ -65,33 +64,7 @@ const Blog: CollectionConfig = {
       editor: lexicalEditor(),
       required: true,
     },
-    {
-      name: 'contentHtml',
-      label: 'Contenido (HTML)',
-      type: 'textarea',
-      admin: {
-        readOnly: true,
-      },
-      hooks: {
-        afterRead: [
-          ({ siblingData }) => {
-            try {
-              if (siblingData?.content) {
-                return convertLexicalToHTML({
-                  data: siblingData.content,
-                })
-              }
-              return ''
-            } catch (error) {
-              if (process.env.NODE_ENV === 'development') {
-                console.error('Error converting Lexical to HTML:', error)
-              }
-              return ''
-            }
-          },
-        ],
-      },
-    },
+
     {
       name: 'image',
       label: 'Imagen destacada',

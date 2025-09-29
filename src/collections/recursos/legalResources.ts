@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload'
 import { CollectionSlug } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html'
 import { syncToSearch } from '../../hooks'
 import { slugify } from '../../utils'
 
@@ -87,34 +86,6 @@ const LegalResources: CollectionConfig = {
       editor: lexicalEditor(),
       admin: {
         condition: (data) => data.tipo === 'articulo',
-      },
-    },
-    {
-      name: 'contenidoHtml',
-      label: 'Contenido (HTML)',
-      type: 'textarea',
-      admin: {
-        readOnly: true,
-        condition: (data) => data.tipo === 'articulo',
-      },
-      hooks: {
-        afterRead: [
-          ({ siblingData }) => {
-            try {
-              if (siblingData?.contenido) {
-                return convertLexicalToHTML({
-                  data: siblingData.contenido,
-                })
-              }
-              return ''
-            } catch (error) {
-              if (process.env.NODE_ENV === 'development') {
-                console.error('Error converting Lexical to HTML:', error)
-              }
-              return ''
-            }
-          },
-        ],
       },
     },
     {
